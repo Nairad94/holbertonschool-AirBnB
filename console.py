@@ -106,8 +106,10 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(args) == 3:
             print("** value missing **")
-        else:
-            objects = storage.all()
+        instance = storage.all()[key]
+        attribute = args[2]
+        value = args[3]
+        if attribute in ["id", "created_at", "updated_at"]:
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
