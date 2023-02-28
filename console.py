@@ -15,12 +15,12 @@ class HBNBCommand(cmd.Cmd):
     """ command interpreter """
     prompt = "(hbnb) "
     dic_classes = {
-        "BaseModel": BaseModel,
-        "User": User,
-        "City": City,
-        "Amenity": Amenity,
-        "Place": Place,
-        "Review": Review
+        "BaseModel",
+        "User",
+        "City",
+        "Amenity",
+        "Place",
+        "Review"
     }
 
     def do_quit(self, arg):
