@@ -1,14 +1,27 @@
 #!/usr/bin/python3
-
+""" Console for the AirBnB """
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
     """ command interpreter """
     prompt = "(hbnb) "
-
+    dic_classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
+    }
 
     def do_quit(self, arg):
         """ Quit command to exit the program """
@@ -26,10 +39,10 @@ class HBNBCommand(cmd.Cmd):
         """ Creates a new instance of BaseModel """
         if not arg:
             print(" ** class name missing ** ")
-        elif arg != "BaseModel":
+        elif arg not in HBNBCommand.dic_classes:
             print(" ** class doesn't exist ** ")
         else:
-            instance = BaseModel()
+            instance = HBNBCommand.dic_classes[arg]()
             storage.save()
             print(instance.id)
 
@@ -39,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
         key = args[0] + "." + args[1]
         if not arg:
             print(" ** class name missing ** ")
-        elif args[0] != "BaseModel":
+        elif args[0] not in HBNBCommand.dic_classes:
             print(" ** class doesn't exist ** ")
         elif len(arg) == 1:
             print(" ** instance id missing ** ")
@@ -56,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
         key = args[0] + "." + args[1]
         if not arg:
             print(" ** class name missing ** ")
-        elif args[0] != "BaseModel":
+        elif args[0] not in HBNBCommand.dic_classes:
             print(" ** class doesn't exist ** ")
         elif len(arg) == 1:
             print(" ** instance id missing ** ")
@@ -70,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """ Prints all string of all instances based or not on the class name """
         args = arg.split()
-        if args[0] != "BaseModel":
+        if len(args) > 0 and args[0] not in HBNBCommand.dic_classes:
             print(" ** class doesn't exist ** ")
         else:
             objects = storage.all()
@@ -81,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if not args:
             print(" ** class name missing ** ")
-        elif args[0] != "BaseModel":
+        elif args[0] not in HBNBCommand.dic_classes:
             print(" ** class doesn't exist ** ")
         elif len(args) == 1:
             print(" ** instance id missing ** ")
