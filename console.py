@@ -97,14 +97,14 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         elif args[0] not in HBNBCommand.dic_classes:
             print("** class doesn't exist **")
-        elif len(args) == 1:
+        elif len(args) < 2:
             print("** instance id missing **")
         key = args[0] + '.' + args[1]
         if key not in storage.all():
             print("** no instance found **")
-        elif len(args) == 2:
+        elif len(args) < 3:
             print("** attribute name missing **")
-        elif len(args) == 3:
+        elif len(args) < 4:
             print("** value missing **")
         else:
             setattr(storage.all()[key], args[2], args[3])
