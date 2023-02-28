@@ -77,6 +77,7 @@ class HBNBCommand(cmd.Cmd):
             all_arg = storage.all()
             if key in all_arg.keys():
                 del all_arg[key]
+                storage.save()
             else:
                 print("** no instance found **")
 
