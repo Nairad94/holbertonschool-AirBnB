@@ -38,9 +38,9 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         """ Creates a new instance of BaseModel """
         if not arg:
-            print(" ** class name missing ** ")
+            print("** class name missing **")
         elif arg not in HBNBCommand.dic_classes:
-            print(" ** class doesn't exist ** ")
+            print("** class doesn't exist **")
         else:
             instance = HBNBCommand.dic_classes[arg]()
             storage.save()
@@ -51,13 +51,13 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         key = args[0] + "." + args[1]
         if not arg:
-            print(" ** class name missing ** ")
+            print("** class name missing **")
         elif args[0] not in HBNBCommand.dic_classes:
-            print(" ** class doesn't exist ** ")
+            print("** class doesn't exist **")
         elif len(arg) == 1:
-            print(" ** instance id missing ** ")
+            print("** instance id missing **")
         elif key not in storage.all():
-            print(" ** no instance found ** ")
+            print("** no instance found **")
         else:
             all_arg = storage.all()
             if key in all_arg.keys():
@@ -68,13 +68,13 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         key = args[0] + "." + args[1]
         if not arg:
-            print(" ** class name missing ** ")
+            print("** class name missing **")
         elif args[0] not in HBNBCommand.dic_classes:
-            print(" ** class doesn't exist ** ")
+            print("** class doesn't exist **")
         elif len(arg) == 1:
-            print(" ** instance id missing ** ")
+            print("** instance id missing **")
         elif key not in storage.all():
-            print(" ** no instance found ** ")
+            print("** no instance found **")
         else:
             all_arg = storage.all()
             if key in all_arg.keys():
@@ -84,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
         """ Prints all string of all instances based or not on the class name """
         args = arg.split()
         if len(args) > 0 and args[0] not in HBNBCommand.dic_classes:
-            print(" ** class doesn't exist ** ")
+            print("** class doesn't exist **")
         else:
             objects = storage.all()
             print([str(objects[obj]) for obj in objects])
@@ -93,18 +93,18 @@ class HBNBCommand(cmd.Cmd):
         """ Updates an instance based on the class name and id by adding or updating attribute """
         args = arg.split()
         if not args:
-            print(" ** class name missing ** ")
+            print("** class name missing **")
         elif args[0] not in HBNBCommand.dic_classes:
-            print(" ** class doesn't exist ** ")
+            print("** class doesn't exist **")
         elif len(args) == 1:
-            print(" ** instance id missing ** ")
+            print("** instance id missing **")
         key = args[0] + '.' + args[1]
         if key not in storage.all().keys():
-            print(" ** no instance found ** ")
+            print("** no instance found **")
         if len(args) == 2:
-            print(" ** attribute name missing ** ")
+            print("** attribute name missing **")
         if len(args) == 3:
-            print(" ** value missing ** ")
+            print("** value missing **")
         instance = storage.all()[key]
         attr_name = args[2]
         try:
