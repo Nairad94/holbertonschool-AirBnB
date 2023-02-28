@@ -91,11 +91,12 @@ class HBNBCommand(cmd.Cmd):
             print([str(objects[obj]) for obj in objects])
 
     def do_update(self, arg):
+        def do_update(self, arg):
         """ Updates an instance based on the class name and id by adding or updating attribute """
         args = arg.split()
         if not args:
             print("** class name missing **")
-        elif args[0] not in HBNBCommand.dic_classes:
+        elif args[0] not in HBNBCommand.dic_classes.key():
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
